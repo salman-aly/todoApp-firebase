@@ -29,7 +29,7 @@ onAuthStateChanged(auth, async (user) => {
         0,
         user.email.indexOf("@")
       )}`;
-      email.innerHTML = user.email;
+      email.value = user.email;
 
       loader.style.display = "none";
       const uid = user.uid;
@@ -74,7 +74,7 @@ let phone = document.getElementById("phone");
 let registerPhone = document.getElementById("registerPhone");
 let confirmation;
 
-window.intlTelInput(phone, {
+window.intlTelInput({
   onlyCountries: [
     "al",
     "ad",
