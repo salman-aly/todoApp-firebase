@@ -11,7 +11,8 @@
     --secondaryColor: #fff;
 }
 
-.main-container {
+
+.container {
     min-height: 300px;
     width: 350px;
     margin: 0 auto;
@@ -20,18 +21,37 @@
     padding: 30px 15px;
     border-radius: 10px;
     color: var(--secondaryColor);
+    margin-bottom: 25px;
 }
 
-.main-container .flex {
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.content h3 {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.content button {
+    width: 70px !important;
+    font-size: 12px !important;
+
+}
+
+.container .flex {
     display: flex;
     flex-direction: column;
 }
 
-.main-container .top-h2 {
+.container .top-h2 {
     padding-bottom: 20px;
 }
 
-.main-container input {
+.container input {
     border: none;
     border-bottom: 1px solid #fff;
     outline: none;
@@ -45,7 +65,7 @@ input::placeholder {
     color: #fff;
 }
 
-.main-container button {
+.container button {
     width: 140px;
     padding: 6px;
     cursor: pointer;
@@ -56,16 +76,16 @@ input::placeholder {
     margin-top: 10px;
 }
 
-.main-container input ::placeholder {
+.container input ::placeholder {
     color: #fff !important;
 }
 
-.main-container .h-task {
+.container .h-task {
     margin-top: 10px;
 }
 
 
-.main-container p {
+.container p {
     height: 20px;
     border: 1px solid #fff;
     border-radius: 3px;
@@ -74,7 +94,7 @@ input::placeholder {
     font-size: 16px;
 }
 
-.main-container .createTask i {
+.container .createTask i {
     padding-left: 120px;
 }
 

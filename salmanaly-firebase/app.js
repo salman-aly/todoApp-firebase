@@ -24,7 +24,7 @@ onAuthStateChanged(auth, (user) => {
     if (location.pathname !== "/salmanaly-firebase/index.html") {
       window.location = "/salmanaly-firebase/index.html";
     }
-    name.innerHTML = user.email.slice(0, user.email.indexOf("@"));
+    name.innerHTML = `Welcome ${user.email.slice(0, user.email.indexOf("@"))}`;
     email.innerHTML = user.email;
 
     loader.style.display = "none";

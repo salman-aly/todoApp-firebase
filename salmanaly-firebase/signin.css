@@ -133,6 +133,9 @@ button:hover {
 
 .social .fb a {
     text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 3px;
 }
 
 .social .go {
@@ -141,6 +144,7 @@ button:hover {
     color: #080710;
     border-radius: 6px;
 }
+
 
 .social i {
     margin-right: 4px;
