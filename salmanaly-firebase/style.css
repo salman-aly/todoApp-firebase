@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+:root {
+    --primaryColor: #10AC84;
+    --secondaryColor: #fff;
+}
+
+.main-container {
+    min-height: 300px;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: var(--primaryColor);
+    padding: 30px 15px;
+    border-radius: 10px;
+    color: var(--secondaryColor);
+}
+
+.main-container .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .top-h2 {
+    padding-bottom: 20px;
+}
+
+.main-container input {
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    height: 40px;
+    background-color: transparent;
+    color: var(--secondaryColor);
+    margin-bottom: 5px;
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+.main-container button {
+    width: 140px;
+    padding: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.main-container input ::placeholder {
+    color: #fff !important;
+}
+
+.main-container .h-task {
+    margin-top: 10px;
+}
+
+
+.main-container p {
+    height: 20px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 10px 7px;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.main-container .createTask i {
+    padding-left: 120px;
+}
+
+
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    width: 200px;
+    background-color: var(--primaryColor) !important;
+}

@@ -1,0 +1,147 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap'); */
+body {
+    background-color: #080710;
+}
+
+.main-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    height: 480px;
+    width: 400px;
+    background-color: #C7EBED;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 45px 35px;
+    background-image: url(img/w2.svg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.form img {
+    height: 80px;
+}
+
+.account-register {
+    font-size: 12px;
+    text-align: center;
+}
+
+.account-register a {
+    color: #000000;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.form * {
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+.form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 7px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.form .flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+input {
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+::placeholder {
+    color: #161616;
+}
+
+button {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #fff !important;
+    color: #080710 !important;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+button:hover {
+    color: #000000 !important;
+}
+
+.social {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.social div {
+    background: red;
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #ffffff;
+    text-align: center;
+}
+
+.social div:hover {
+    background-color: rgba(255, 255, 255, 0.47);
+}
+
+.social .fb {
+    margin-left: 25px;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.social .fb a {
+    text-decoration: none;
+}
+
+.social .go {
+    cursor: pointer;
+    background-color: #fff;
+    color: #080710;
+    border-radius: 6px;
+}
+
+.social i {
+    margin-right: 4px;
+}

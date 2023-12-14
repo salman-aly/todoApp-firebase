@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="phone.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css" />
+    <title>OTP Verification</title>
+</head>
+
+<body>
+    <div class="phone-verification">
+        <div class="verification-content animate__animated animate__flipInX">
+            <div class="border">
+                <div>
+                    <h1>Registration</h1>
+                    <img src="img/1.gif" alt="">
+                    <p>We will send you a one time password<br>on your phone</p>
+                </div>
+                <div>
+                    <input id="phone" type="tel">
+                    <div id="recaptcha-container"></div>
+                    <button id="registerPhone">GET OTP</button>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <h1>Verification</h1>
+                    <img src="img/2.gif" alt="">
+                    <p>You will get OTP via Sms</p>
+                </div>
+                <br>
+                <div>
+                    <input id="userOtp" type="number" placeholder="Enter your OTP here">
+                    <div>
+                        <button id="otpVerify">VERIFY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+    <script src="app.js" type="module"></script>
+    <script src="firebase.js" type="module"></script>
+
+</body>
+
+</html>

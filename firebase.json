@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "salmanaly-firebase",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

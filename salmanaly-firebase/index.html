@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Task manager app</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div>
+        <h2 class="top-h2">Task Managing App</h2>
+        <div class="flex">
+          <input id="userTask" type="text" placeholder="New Task" />
+          <button onclick="createTask()">
+            Add Task
+            <i class="bx bxl-telegram bx-tada" style="color: #10ac84"></i>
+          </button>
+        </div>
+      </div>
+      <div>
+        <h2 class="h-task">Tasks</h2>
+        <div class="createTask">
+          <p id="hideDefault">
+            Your task will show here..
+            <a href="#" id="del">
+              <i
+                class="bx bxs-trash-alt bx-flashing"
+                style="color: #ffffff"></i>
+            </a>
+          </p>
+        </div>
+        <button id="removeAll">
+          Clear task
+          <i
+            class="bx bxs-message-rounded-x bx-flashing"
+            style="color: #10ac84"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="task.js"></script>
+  </body>
+</html>
