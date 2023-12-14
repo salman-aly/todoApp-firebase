@@ -5,6 +5,9 @@ import {
   sendEmailVerification,
   signInWithPhoneNumber,
   RecaptchaVerifier,
+  db,
+  doc,
+  getDoc,
 } from "./firebase.js";
 
 let name = document.getElementById("name");
@@ -13,22 +16,29 @@ let email = document.getElementById("email");
 let loader = document.querySelector(".loader-spin");
 let content = document.querySelector(".content");
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
-    // verified by email
-    sendEmailVerification(auth.currentUser).then(() => {
-      console.log("Email verification sent!");
-    });
-    console.log("user login", user);
+    const docRef = doc(db, "user", user.uid);
+    const docSnap = await getDoc(docRef);
+    console.log("doc==>", docSnap.data());
+    if (docSnap.data()) {
+      if (location.pathname !== "/salmanaly-firebase/index.html") {
+        window.location = "/salmanaly-firebase/index.html";
+      }
+      name.innerHTML = `Welcome ${user.email.slice(
+        0,
+        user.email.indexOf("@")
+      )}`;
+      email.innerHTML = user.email;
 
-    if (location.pathname !== "/salmanaly-firebase/index.html") {
-      window.location = "/salmanaly-firebase/index.html";
+      loader.style.display = "none";
+      const uid = user.uid;
     }
-    name.innerHTML = `Welcome ${user.email.slice(0, user.email.indexOf("@"))}`;
-    email.innerHTML = user.email;
+    // verified by email
 
-    loader.style.display = "none";
-    const uid = user.uid;
+    // sendEmailVerification(auth.currentUser).then(() => {
+    //   console.log("Email verification sent!");
+    // });
   } else {
     console.log("user not login", location.pathname);
 
@@ -37,7 +47,6 @@ onAuthStateChanged(auth, (user) => {
       location.pathname !== "/salmanaly-firebase/signup.html" &&
       location.pathname !== "/salmanaly-firebase/phone.html" &&
       location.pathname !== "/salmanaly-firebase/index.html"
-      
     ) {
       window.location = "/salmanaly-firebase/index.html";
     }

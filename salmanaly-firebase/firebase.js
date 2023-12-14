@@ -9,8 +9,15 @@ import {
   signInWithPhoneNumber,
   RecaptchaVerifier,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+import {
+  doc,
+  setDoc,
+  getDoc,
+  getFirestore
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -25,6 +32,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
 export {
@@ -38,5 +46,9 @@ export {
   RecaptchaVerifier,
   GoogleAuthProvider,
   signInWithPopup,
-  googleProvider
+  googleProvider,
+  db,
+  doc,
+  setDoc,
+  getDoc
 };

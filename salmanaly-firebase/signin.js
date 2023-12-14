@@ -8,7 +8,7 @@ let register = () => {
   let email = document.getElementById("email");
   let password = document.getElementById("password");
   //   console.log(userName, password);
-
+  
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
       const user = userCredential.user;
