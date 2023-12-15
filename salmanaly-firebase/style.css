@@ -99,6 +99,11 @@ input::placeholder {
 }
 
 
+.container .border-none input{
+    border-bottom: none !important;
+}
+
+
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
     width: 200px;

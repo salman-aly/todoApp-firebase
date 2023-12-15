@@ -8,6 +8,7 @@ import {
   db,
   doc,
   getDoc,
+  updateDoc,
 } from "./firebase.js";
 
 let name = document.getElementById("name");
@@ -25,11 +26,11 @@ onAuthStateChanged(auth, async (user) => {
       if (location.pathname !== "/salmanaly-firebase/index.html") {
         window.location = "/salmanaly-firebase/index.html";
       }
-      name.innerHTML = `Welcome ${user.email.slice(
+      name.value = `Welcome ${user.email.slice(
         0,
         user.email.indexOf("@")
       )}`;
-      email.value = user.email;
+      email.innerHTML = user.email;
 
       loader.style.display = "none";
       const uid = user.uid;
@@ -41,7 +42,7 @@ onAuthStateChanged(auth, async (user) => {
     // });
   } else {
     console.log("user not login", location.pathname);
-        
+
     if (
       location.pathname !== "/salmanaly-firebase/signin.html" &&
       location.pathname !== "/salmanaly-firebase/signup.html" &&
@@ -170,3 +171,17 @@ let verify = () => {
 };
 
 otpVerify && otpVerify.addEventListener("click", verify);
+
+//update task button
+let updateTask = document.getElementById("updateTask");
+
+let taskUpdate = async () => {
+  let name = document.getElementById("name");
+  console.log(name.value, auth.currentUser.uid);
+  const userRef = doc(db, "user", auth.currentUser.uid);
+  await updateDoc(userRef, {
+    population: increment(50),
+  });
+};
+
+updateTask && updateTask.addEventListener("click", taskUpdate);
