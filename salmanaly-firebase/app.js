@@ -22,14 +22,12 @@ onAuthStateChanged(auth, async (user) => {
     const docRef = doc(db, "user", user.uid);
     const docSnap = await getDoc(docRef);
     console.log("doc==>", docSnap.data());
+
     if (docSnap.data()) {
       if (location.pathname !== "/salmanaly-firebase/index.html") {
         window.location = "/salmanaly-firebase/index.html";
       }
-      name.value = `Welcome ${user.email.slice(
-        0,
-        user.email.indexOf("@")
-      )}`;
+      name.value = docSnap.data().name;
       email.innerHTML = user.email;
 
       loader.style.display = "none";
@@ -74,57 +72,57 @@ let phone = document.getElementById("phone");
 let registerPhone = document.getElementById("registerPhone");
 let confirmation;
 
-window.intlTelInput({
-  onlyCountries: [
-    "al",
-    "ad",
-    "at",
-    "by",
-    "be",
-    "ba",
-    "bg",
-    "hr",
-    "cz",
-    "dk",
-    "ee",
-    "fo",
-    "fi",
-    "pk",
-    "de",
-    "gi",
-    "gr",
-    "va",
-    "hu",
-    "is",
-    "ie",
-    "it",
-    "lv",
-    "li",
-    "lt",
-    "lu",
-    "mk",
-    "mt",
-    "md",
-    "mc",
-    "me",
-    "nl",
-    "no",
-    "pl",
-    "pt",
-    "ro",
-    "ru",
-    "sm",
-    "rs",
-    "sk",
-    "si",
-    "es",
-    "se",
-    "ch",
-    "ua",
-    "gb",
-  ],
-  utilsScript: "/intl-tel-input/js/utils.js?1701962297307", // just for formatting/placeholders etc
-});
+// window.intlTelInput(phone,{
+//   onlyCountries: [
+//     "al",
+//     "ad",
+//     "at",
+//     "by",
+//     "be",
+//     "ba",
+//     "bg",
+//     "hr",
+//     "cz",
+//     "dk",
+//     "ee",
+//     "fo",
+//     "fi",
+//     "pk",
+//     "de",
+//     "gi",
+//     "gr",
+//     "va",
+//     "hu",
+//     "is",
+//     "ie",
+//     "it",
+//     "lv",
+//     "li",
+//     "lt",
+//     "lu",
+//     "mk",
+//     "mt",
+//     "md",
+//     "mc",
+//     "me",
+//     "nl",
+//     "no",
+//     "pl",
+//     "pt",
+//     "ro",
+//     "ru",
+//     "sm",
+//     "rs",
+//     "sk",
+//     "si",
+//     "es",
+//     "se",
+//     "ch",
+//     "ua",
+//     "gb",
+//   ],
+//   utilsScript: "/intl-tel-input/js/utils.js?1701962297307", // just for formatting/placeholders etc
+// });
 
 let phoneRegister = () => {
   console.log("chalra hai");
@@ -166,7 +164,7 @@ let verify = () => {
 
   console.log(userOtp.value);
 
-  loader.style.display = "none";
+  // loader.style.display = "none";
   content.style.display = "block";
 };
 
@@ -177,11 +175,16 @@ let updateTask = document.getElementById("updateTask");
 
 let taskUpdate = async () => {
   let name = document.getElementById("name");
+  let userTask = document.getElementById("userTask");
   console.log(name.value, auth.currentUser.uid);
+
   const userRef = doc(db, "user", auth.currentUser.uid);
+
   await updateDoc(userRef, {
-    population: increment(50),
+    name: name.value,
   });
+
+  console.log("Profile updated");
 };
 
 updateTask && updateTask.addEventListener("click", taskUpdate);
