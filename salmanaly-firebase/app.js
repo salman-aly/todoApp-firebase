@@ -41,14 +41,13 @@ onAuthStateChanged(auth, async (user) => {
     // });
   } else {
     console.log("user not login", location.pathname);
-
+        
     if (
       location.pathname !== "/salmanaly-firebase/signin.html" &&
       location.pathname !== "/salmanaly-firebase/signup.html" &&
-      location.pathname !== "/salmanaly-firebase/phone.html" &&
-      location.pathname !== "/salmanaly-firebase/index.html"
+      location.pathname !== "/salmanaly-firebase/phone.html"
     ) {
-      window.location = "/salmanaly-firebase/index.html";
+      window.location = "./signin.html";
     }
   }
 });
