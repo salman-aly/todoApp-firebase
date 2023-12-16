@@ -9,6 +9,11 @@ import {
   doc,
   getDoc,
   updateDoc,
+  addDoc,
+  getDocs,
+  collection,
+  onSnapshot,
+  deleteDoc,
 } from "./firebase.js";
 
 let name = document.getElementById("name");
@@ -188,3 +193,60 @@ let taskUpdate = async () => {
 };
 
 updateTask && updateTask.addEventListener("click", taskUpdate);
+
+// delete task
+// let del = document.getElementById("del");
+
+// let taskDelete = async () => {
+//   let userTask = document.getElementById("userTask");
+//   await deleteDoc(doc(db, "user", "userTask"));
+//   console.log("delete task");
+// };
+
+// del && del.addEventListener("click", taskDelete);
+
+//get all users from firebase
+
+let getAllUsers = async () => {
+  const q = collection(db, "user");
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+  });
+};
+
+getAllUsers();
+
+let createTaskBtn = document.getElementById("createTask");
+
+let taskCreate = async () => {
+  let userTask = document.getElementById("todo");
+  // console.log(userTask.value);
+
+  const docRef = await addDoc(collection(db, "todos"), {
+    value: userTask.value,
+  });
+  console.log("Document written with ID: ", docRef.id);
+};
+
+createTaskBtn && createTaskBtn.addEventListener("click", taskCreate);
+
+let getAllTodos = async () => {
+  const ref = collection(db, "todos");
+  let todoList = document.getElementById("todoList");
+  const unsubscribe = onSnapshot(ref, (querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      todoList.innerHTML += `
+        <p class="paragraph">
+          ${doc.data().value}
+          <a href="#">
+            <i class="bx bxs-trash-alt bx-flashing" style="color: #ffffff"></i>
+          </a>
+        </p>
+      `;
+    });
+  });
+};
+
+getAllTodos();
