@@ -30,7 +30,7 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     const docRef = doc(db, "user", user.uid);
     const docSnap = await getDoc(docRef);
-    console.log("doc==>", docSnap.data());
+    // console.log("doc==>", docSnap.data());
 
     if (docSnap.data()) {
       if (location.pathname !== "/salmanaly-firebase/index.html") {
@@ -216,7 +216,7 @@ let getAllUsers = async () => {
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
+    // console.log(doc.id, " => ", doc.data());
   });
 };
 
@@ -233,7 +233,7 @@ let taskCreate = async () => {
     timeStamp: serverTimestamp(),
     status: "pending",
   });
-  console.log("Document written with ID: ", docRef.id);
+  // console.log("Document written with ID: ", docRef.id);
 };
 
 createTaskBtn && createTaskBtn.addEventListener("click", taskCreate);
@@ -248,7 +248,7 @@ let getAllTodos = async () => {
   const unsubscribe = onSnapshot(ref, (querySnapshot) => {
     todoList.innerHTML = "";
     querySnapshot.forEach((doc) => {
-      console.log("timestamp====>", doc.data());
+      // console.log("timestamp====>", doc.data());
       todoList.innerHTML += `
         <p class="paragraph">
           ${doc.data().value}
