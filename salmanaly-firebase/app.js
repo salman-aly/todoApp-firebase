@@ -13,7 +13,10 @@ import {
   getDocs,
   collection,
   onSnapshot,
-  deleteDoc,
+  serverTimestamp,
+  query,
+  orderBy,
+  // deleteDoc,
 } from "./firebase.js";
 
 let name = document.getElementById("name");
@@ -226,6 +229,7 @@ let taskCreate = async () => {
 
   const docRef = await addDoc(collection(db, "todos"), {
     value: userTask.value,
+    timeStamp: serverTimestamp(),
   });
   console.log("Document written with ID: ", docRef.id);
 };
@@ -233,10 +237,12 @@ let taskCreate = async () => {
 createTaskBtn && createTaskBtn.addEventListener("click", taskCreate);
 
 let getAllTodos = async () => {
-  const ref = collection(db, "todos");
+  const ref = query(collection(db, "todos"), orderBy("timeStamp", "desc"));
   let todoList = document.getElementById("todoList");
   const unsubscribe = onSnapshot(ref, (querySnapshot) => {
+    todoList.innerHTML = "";
     querySnapshot.forEach((doc) => {
+      console.log("timestamp====>", doc.data().timeStamp.toMillis());
       todoList.innerHTML += `
         <p class="paragraph">
           ${doc.data().value}

@@ -22,7 +22,10 @@ import {
   getDocs,
   collection,
   onSnapshot,
-  deleteDoc 
+  deleteDoc,
+  serverTimestamp,
+  query,
+  orderBy,
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -62,5 +65,8 @@ export {
   getDocs,
   collection,
   onSnapshot,
-  deleteDoc 
+  deleteDoc,
+  serverTimestamp,
+  query,
+  orderBy,
 };
