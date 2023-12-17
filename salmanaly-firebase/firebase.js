@@ -26,6 +26,7 @@ import {
   serverTimestamp,
   query,
   orderBy,
+  where
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 // Your web app's Firebase configuration
@@ -69,4 +70,5 @@ export {
   serverTimestamp,
   query,
   orderBy,
+  where
 };
