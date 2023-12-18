@@ -4,14 +4,14 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    color: var(--secondaryColor);
 }
 
 
 :root {
-    --primaryColor: #10AC84;
-    --secondaryColor: #fff;
+    --primaryColor: #C7EBED;
+    --secondaryColor: #000000;
 }
-
 
 .container {
     min-height: 300px;
@@ -23,6 +23,10 @@
     border-radius: 10px;
     color: var(--secondaryColor);
     margin-bottom: 25px;
+    background-image: url(img/wave.svg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .content {
@@ -54,7 +58,7 @@
 
 .container input {
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #000000;
     outline: none;
     height: 40px;
     background-color: transparent;
@@ -64,7 +68,7 @@
 }
 
 input::placeholder {
-    color: #fff;
+    color: #000000;
 }
 
 .container button {
@@ -76,10 +80,11 @@ input::placeholder {
     border-radius: 3px;
     font-size: 16px;
     margin-top: 10px;
+    background-color: #ffff;
 }
 
 .container input ::placeholder {
-    color: #fff !important;
+    color: #000000 !important;
 }
 
 .container .h-task {
@@ -89,7 +94,7 @@ input::placeholder {
 
 .container p {
     height: 20px;
-    border: 1px solid #fff;
+    border: 1px solid #000000;
     border-radius: 3px;
     padding: 10px 7px;
     margin-top: 15px;
@@ -134,6 +139,12 @@ input::placeholder {
 
 .content button {
     background-color: transparent !important;
+}
+
+.flexBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .content button .bx {

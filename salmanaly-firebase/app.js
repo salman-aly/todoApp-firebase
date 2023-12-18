@@ -188,7 +188,7 @@ const getData = async () => {
           <div>
             <p class="para">${doc.data().value}</p>
           </div>
-          <div>
+          <div class="flexBtn">
             <button class="edit_btn">
             <i class='bx bxs-edit-alt' style='color:#060606'  ></i>
             </button>
