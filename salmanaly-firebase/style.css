@@ -53,7 +53,7 @@
 }
 
 .container .top-h2 {
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .container input {
@@ -145,6 +145,10 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.firebase-content img{
+    height: 60px !important;
 }
 
 .content button .bx {
