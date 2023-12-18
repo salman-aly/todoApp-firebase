@@ -16,8 +16,8 @@ import {
   serverTimestamp,
   query,
   orderBy,
-  where
-  // deleteDoc,
+  where,
+  deleteDoc,
 } from "./firebase.js";
 
 let name = document.getElementById("name");
@@ -75,63 +75,192 @@ let logout = () => {
 
 logoutBtn && logoutBtn.addEventListener("click", logout);
 
+//get all users from firebase
+
+let getAllUsers = async () => {
+  const q = collection(db, "user");
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // console.log(doc.id, " => ", doc.data());
+  });
+};
+
+getAllUsers();
+
+let input = document.getElementById("input");
+let list_item = document.getElementById("list_item");
+// Show data in UI
+const addItem = async (e) => {
+  if (input.value.trim() !== "") {
+    if (input.value.length < 20) {
+      list_item.innerHTML += `
+        <div class="list_item">
+          <div>
+            <p class="para">${input.value}</p>
+          </div>
+          <div>
+            <button class="edit_btn">Edit</button>
+            <button class="del_btn">Delete</button>
+          </div>
+        </div>
+      `;
+      addEventListeners();
+      addData();
+    } else {
+      alert("value should be lower 22 leter");
+    }
+  } else {
+    alert("Can't add an empty value");
+  }
+  input.value = "";
+};
+//Sending data to firestore
+const addData = async () => {
+  const docRef = await addDoc(collection(db, "todos"), {
+    value: input.value,
+    timestamp: serverTimestamp(),
+  });
+};
+//Button event listener
+const addEventListeners = () => {
+  let editButtons = document.querySelectorAll(".edit_btn");
+  let deleteButtons = document.querySelectorAll(".del_btn");
+
+  editButtons.forEach((button, i) => {
+    button.addEventListener("click", () => {
+      editItem(i);
+    });
+  });
+
+  deleteButtons.forEach((button, i) => {
+    button.addEventListener("click", () => {
+      deleteItem(i);
+    });
+  });
+};
+addEventListeners();
+//Edit Button
+const editItem = async (index) => {
+  let newValue = prompt("Enter new value:");
+
+  if (newValue !== null) {
+    if (newValue.length < 20) {
+      // Update Firestore data
+      const ref = query(collection(db, "todos"), orderBy("timestamp", "desc"));
+      const querySnapshot = await getDocs(ref);
+      const documents = querySnapshot.docs;
+      const docId = documents[index].id;
+
+      await updateDoc(doc(db, "todos", docId), {
+        value: newValue,
+        timestamp: serverTimestamp(),
+      });
+
+      // Update UI
+      let paragraphs = document.querySelectorAll(".para");
+      paragraphs[index].textContent = newValue;
+    } else {
+      alert("Value should be less than 20 characters");
+    }
+  }
+};
+//Delete button
+const deleteItem = async (index) => {
+  const ref = query(collection(db, "todos"), orderBy("timestamp", "desc"));
+  const querySnapshot = await getDocs(ref);
+  const documents = querySnapshot.docs;
+  const docId = documents[index].id;
+  await deleteDoc(doc(db, "todos", docId));
+};
+
+const addItem_btn = document.getElementById("addItem_btn");
+addItem_btn.addEventListener("click", addItem);
+
+//Getting data from FireStore & Display
+const getData = async () => {
+  const ref = query(collection(db, "todos"), orderBy("timestamp", "desc"));
+  const unsubscribe = onSnapshot(ref, (querySnapshot) => {
+    list_item.innerHTML = "";
+    querySnapshot.forEach((doc) => {
+      list_item.innerHTML += `
+        <div class="list_item">
+          <div>
+            <p class="para">${doc.data().value}</p>
+          </div>
+          <div>
+            <button class="edit_btn">
+            <i class='bx bxs-edit-alt' style='color:#060606'  ></i>
+            </button>
+            <button class="del_btn">
+            <i class='bx bxs-message-square-x'></i>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+    addEventListeners();
+  });
+};
+getData();
+
 // Phone OTP send
 
 let phone = document.getElementById("phone");
 let registerPhone = document.getElementById("registerPhone");
 let confirmation;
 
-// window.intlTelInput(phone,{
-//   onlyCountries: [
-//     "al",
-//     "ad",
-//     "at",
-//     "by",
-//     "be",
-//     "ba",
-//     "bg",
-//     "hr",
-//     "cz",
-//     "dk",
-//     "ee",
-//     "fo",
-//     "fi",
-//     "pk",
-//     "de",
-//     "gi",
-//     "gr",
-//     "va",
-//     "hu",
-//     "is",
-//     "ie",
-//     "it",
-//     "lv",
-//     "li",
-//     "lt",
-//     "lu",
-//     "mk",
-//     "mt",
-//     "md",
-//     "mc",
-//     "me",
-//     "nl",
-//     "no",
-//     "pl",
-//     "pt",
-//     "ro",
-//     "ru",
-//     "sm",
-//     "rs",
-//     "sk",
-//     "si",
-//     "es",
-//     "se",
-//     "ch",
-//     "ua",
-//     "gb",
-//   ],
-//   utilsScript: "/intl-tel-input/js/utils.js?1701962297307", // just for formatting/placeholders etc
-// });
+window.intlTelInput(phone, {
+  onlyCountries: [
+    "al",
+    "ad",
+    "at",
+    "by",
+    "be",
+    "ba",
+    "bg",
+    "hr",
+    "cz",
+    "dk",
+    "ee",
+    "fo",
+    "fi",
+    "pk",
+    "de",
+    "gi",
+    "gr",
+    "va",
+    "hu",
+    "is",
+    "ie",
+    "it",
+    "lv",
+    "li",
+    "lt",
+    "lu",
+    "mk",
+    "mt",
+    "md",
+    "mc",
+    "me",
+    "nl",
+    "no",
+    "pl",
+    "pt",
+    "ro",
+    "ru",
+    "sm",
+    "rs",
+    "sk",
+    "si",
+    "es",
+    "se",
+    "ch",
+    "ua",
+    "gb",
+  ],
+  utilsScript: "/intl-tel-input/js/utils.js?1701962297307", // just for formatting/placeholders etc
+});
 
 let phoneRegister = () => {
   console.log("chalra hai");
@@ -178,87 +307,3 @@ let verify = () => {
 };
 
 otpVerify && otpVerify.addEventListener("click", verify);
-
-//update task button
-let updateTask = document.getElementById("updateTask");
-
-let taskUpdate = async () => {
-  let name = document.getElementById("name");
-  let userTask = document.getElementById("userTask");
-  console.log(name.value, auth.currentUser.uid);
-
-  const userRef = doc(db, "user", auth.currentUser.uid);
-
-  await updateDoc(userRef, {
-    name: name.value,
-  });
-
-  console.log("Profile updated");
-};
-
-updateTask && updateTask.addEventListener("click", taskUpdate);
-
-// delete task
-// let del = document.getElementById("del");
-
-// let taskDelete = async () => {
-//   let userTask = document.getElementById("userTask");
-//   await deleteDoc(doc(db, "user", "userTask"));
-//   console.log("delete task");
-// };
-
-// del && del.addEventListener("click", taskDelete);
-
-//get all users from firebase
-
-let getAllUsers = async () => {
-  const q = collection(db, "user");
-
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // console.log(doc.id, " => ", doc.data());
-  });
-};
-
-getAllUsers();
-
-let createTaskBtn = document.getElementById("createTask");
-
-let taskCreate = async () => {
-  let userTask = document.getElementById("todo");
-  // console.log(userTask.value);
-
-  const docRef = await addDoc(collection(db, "todos"), {
-    value: userTask.value,
-    timeStamp: serverTimestamp(),
-    status: "pending",
-  });
-  // console.log("Document written with ID: ", docRef.id);
-};
-
-createTaskBtn && createTaskBtn.addEventListener("click", taskCreate);
-
-let getAllTodos = async () => {
-  const ref = query(
-    collection(db, "todos"),
-    orderBy("timeStamp", "desc"),
-    where("status", "==", "completed")
-  );
-  let todoList = document.getElementById("todoList");
-  const unsubscribe = onSnapshot(ref, (querySnapshot) => {
-    todoList.innerHTML = "";
-    querySnapshot.forEach((doc) => {
-      // console.log("timestamp====>", doc.data());
-      todoList.innerHTML += `
-        <p class="paragraph">
-          ${doc.data().value}
-          <a href="#">
-            <i class="bx bxs-trash-alt bx-flashing" style="color: #ffffff"></i>
-          </a>
-        </p>
-      `;
-    });
-  });
-};
-
-getAllTodos();

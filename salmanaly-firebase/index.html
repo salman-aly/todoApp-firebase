@@ -13,7 +13,7 @@
   <div class="main-container">
     <div class="container">
       <div class="loader-spin">
-          <span class="loader"></span>
+        <span class="loader"></span>
       </div>
       <div class="content">
         <div class="border-none">
@@ -21,33 +21,24 @@
           <input placeholder="Name" id="name">
           <h3 id="email">alysalman83@gmail.com</h3>
         </div>
-        <button id="logoutBtn">Logout</button>
+        <button id="logoutBtn">
+          <i class='bx bx-log-out-circle bx-flip-horizontal' style='color:#f7f7f7'></i>
+        </button>
       </div>
       <div>
         <h2 class="top-h2">Task Managing App</h2>
-        <div class="flex">
-          <input id="todo" type="text" placeholder="New Task" />
-          <button id="createTask">
-            Add Task
-            <i class="bx bxl-telegram bx-tada" style="color: #10ac84"></i>
-          </button>
+        <div>
+          <div class="box">
+            <div>
+              <div class="input_field">
+                <input type="text" id="input" placeholder="Add Items" />
+                <br />
+                <button id="addItem_btn">Add</button>
+              </div>
+            </div>
+            <div id="list_item"></div>
+          </div>
         </div>
-      </div>
-      <div>
-        <h2 class="h-task">Tasks</h2>
-        <div id="todoList" class="createTask">
-          <p id="hideDefault">
-            Your task will show here..
-            <a href="#" id="del">
-              <i class="bx bxs-trash-alt bx-flashing" style="color: #ffffff"></i>
-            </a>
-          </p>
-        </div>
-        <button id="removeAll">
-          Clear task
-          <i class="bx bxs-message-rounded-x bx-flashing" style="color: #10ac84"></i>
-        </button>
-        <button id="updateTask">Update</button>
       </div>
     </div>
   </div>

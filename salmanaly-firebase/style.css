@@ -60,6 +60,7 @@
     background-color: transparent;
     color: var(--secondaryColor);
     margin-bottom: 5px;
+    width: 80%;
 }
 
 input::placeholder {
@@ -95,15 +96,50 @@ input::placeholder {
     font-size: 16px;
 }
 
-.container .createTask i {
-    padding-left: 120px;
+.paragraph {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3em !important;
 }
 
+.container .paragraph button {
+    width: unset;
+    margin: unset;
+    padding: unset;
+}
 
-.container .border-none input{
+.paragraph>a {
+    display: flex;
+    gap: 25px;
+}
+
+.firebase_del {
+    background-color: transparent;
+}
+
+/* .container .createTask i {
+    padding-left: 120px;
+} */
+
+
+.container .border-none input {
     border-bottom: none !important;
 }
 
+
+.input_field button {
+    width: 220px;
+}
+
+.content button {
+    background-color: transparent !important;
+}
+
+.content button .bx {
+    font-size: 22px;
+    margin-top: 30px;
+}
 
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
