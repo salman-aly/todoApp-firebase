@@ -108,7 +108,7 @@ const addItem = async (e) => {
       addEventListeners();
       addData();
     } else {
-      alert("value should be lower 22 leter");
+      alert("value should be lower 15 leter");
     }
   } else {
     alert("Can't add an empty value");
@@ -145,7 +145,7 @@ const editItem = async (index) => {
   let newValue = prompt("Enter new value:");
 
   if (newValue !== null) {
-    if (newValue.length < 20) {
+    if (newValue.length < 15) {
       // Update Firestore data
       const ref = query(collection(db, "todos"), orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(ref);
@@ -161,7 +161,7 @@ const editItem = async (index) => {
       let paragraphs = document.querySelectorAll(".para");
       paragraphs[index].textContent = newValue;
     } else {
-      alert("Value should be less than 20 characters");
+      alert("Value should be less than 15 characters");
     }
   }
 };
@@ -259,7 +259,7 @@ window.intlTelInput(phone, {
     "ua",
     "gb",
   ],
-  utilsScript: "/intl-tel-input/js/utils.js?1701962297307", // just for formatting/placeholders etc
+  utilsScript: "/intl-tel-input/js/utils.js?1701962297307",
 });
 
 let phoneRegister = () => {
@@ -302,7 +302,7 @@ let verify = () => {
 
   console.log(userOtp.value);
 
-  // loader.style.display = "none";
+  loader.style.display = "none";
   content.style.display = "block";
 };
 

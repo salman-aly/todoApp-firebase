@@ -37,14 +37,13 @@
 }
 
 .content h3 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
 }
 
 .content button {
     width: 70px !important;
-    font-size: 12px !important;
-
+    font-size: 14px !important;
 }
 
 .container .flex {
@@ -81,6 +80,7 @@ input::placeholder {
     font-size: 16px;
     margin-top: 10px;
     background-color: #ffff;
+    border-radius: 15px !important;
 }
 
 .container input ::placeholder {
@@ -98,7 +98,7 @@ input::placeholder {
     border-radius: 3px;
     padding: 10px 7px;
     margin-top: 15px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .paragraph {
@@ -147,7 +147,7 @@ input::placeholder {
     justify-content: space-around;
 }
 
-.firebase-content img{
+.firebase-content img {
     height: 60px !important;
 }
 
