@@ -88,8 +88,11 @@ let getAllUsers = async () => {
 
 getAllUsers();
 
+
+//send data to firestore
 let input = document.getElementById("input");
 let list_item = document.getElementById("list_item");
+
 // Show data in UI
 const addItem = async (e) => {
   if (input.value.trim() !== "") {
@@ -190,7 +193,7 @@ const getData = async () => {
           </div>
           <div class="flexBtn">
             <button class="edit_btn">
-            <i class='bx bxs-edit-alt' style='color:#060606'  ></i>
+            <i class='bx bxs-edit-alt' style='color:#060606'></i>
             </button>
             <button class="del_btn">
             <i class='bx bxs-message-square-x'></i>
