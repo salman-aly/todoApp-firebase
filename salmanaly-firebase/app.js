@@ -88,26 +88,14 @@ let getAllUsers = async () => {
 
 getAllUsers();
 
-
 //send data to firestore
 let input = document.getElementById("input");
 let list_item = document.getElementById("list_item");
 
 // Show data in UI
-const addItem = async (e) => {
+const addItem = () => {
   if (input.value.trim() !== "") {
     if (input.value.length < 20) {
-      list_item.innerHTML += `
-        <div class="list_item">
-          <div>
-            <p class="para">${input.value}</p>
-          </div>
-          <div>
-            <button class="edit_btn">Edit</button>
-            <button class="del_btn">Delete</button>
-          </div>
-        </div>
-      `;
       addEventListeners();
       addData();
     } else {
@@ -213,60 +201,61 @@ let phone = document.getElementById("phone");
 let registerPhone = document.getElementById("registerPhone");
 let confirmation;
 
-window.intlTelInput(phone, {
-  onlyCountries: [
-    "al",
-    "ad",
-    "at",
-    "by",
-    "be",
-    "ba",
-    "bg",
-    "hr",
-    "cz",
-    "dk",
-    "ee",
-    "fo",
-    "fi",
-    "pk",
-    "de",
-    "gi",
-    "gr",
-    "va",
-    "hu",
-    "is",
-    "ie",
-    "it",
-    "lv",
-    "li",
-    "lt",
-    "lu",
-    "mk",
-    "mt",
-    "md",
-    "mc",
-    "me",
-    "nl",
-    "no",
-    "pl",
-    "pt",
-    "ro",
-    "ru",
-    "sm",
-    "rs",
-    "sk",
-    "si",
-    "es",
-    "se",
-    "ch",
-    "ua",
-    "gb",
-  ],
-  utilsScript: "/intl-tel-input/js/utils.js?1701962297307",
-});
+let iti = () =>
+  window.intlTelInput(phone, {
+    onlyCountries: [
+      "al",
+      "ad",
+      "at",
+      "by",
+      "be",
+      "ba",
+      "bg",
+      "hr",
+      "cz",
+      "dk",
+      "ee",
+      "fo",
+      "fi",
+      "pk",
+      "de",
+      "gi",
+      "gr",
+      "va",
+      "hu",
+      "is",
+      "ie",
+      "it",
+      "lv",
+      "li",
+      "lt",
+      "lu",
+      "mk",
+      "mt",
+      "md",
+      "mc",
+      "me",
+      "nl",
+      "no",
+      "pl",
+      "pt",
+      "ro",
+      "ru",
+      "sm",
+      "rs",
+      "sk",
+      "si",
+      "es",
+      "se",
+      "ch",
+      "ua",
+      "gb",
+    ],
+    utilsScript: "/intl-tel-input/js/utils.js?1701962297307",
+  });
 
 let phoneRegister = () => {
-  console.log("chalra hai");
+  // console.log("chalra hai");
 
   window.recaptchaVerifier = new RecaptchaVerifier(
     auth,
