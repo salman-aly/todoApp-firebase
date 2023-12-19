@@ -63,7 +63,7 @@
     background-color: transparent;
     color: var(--secondaryColor);
     margin-bottom: 5px;
-    width: 80%;
+    width: 98%;
 }
 
 input::placeholder {
@@ -93,12 +93,11 @@ input::placeholder {
 
 
 .container p {
-    height: 20px;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    padding: 10px 7px;
+    border-radius: 15px;
+    padding: 7px 10px;
     margin-top: 15px;
     font-size: 18px;
+    background-color: #fff;
 }
 
 .paragraph {

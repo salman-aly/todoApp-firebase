@@ -63,14 +63,31 @@ onAuthStateChanged(auth, async (user) => {
 let logoutBtn = document.getElementById("logoutBtn");
 
 let logout = () => {
-  signOut(auth)
-    .then(() => {
-      console.log("Sign-out successful.");
-      window.location = "signin.html";
-    })
-    .catch((error) => {
-      console.log("err", error);
-    });
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 1500,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+  Toast.fire({
+    icon: "success",
+    title: "Signed out successfully",
+  });
+  setTimeout(() => {
+    signOut(auth)
+      .then(() => {
+        console.log("Sign-out successful.");
+        window.location = "signin.html";
+      })
+      .catch((error) => {
+        console.log("err", error);
+      });
+  }, 2000);
 };
 
 logoutBtn && logoutBtn.addEventListener("click", logout);
