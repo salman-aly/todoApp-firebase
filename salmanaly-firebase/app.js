@@ -123,6 +123,10 @@ const addItem = () => {
   }
   input.value = "";
 };
+
+const addItem_btn = document.getElementById("addItem_btn");
+addItem_btn.addEventListener("click", addItem);
+
 //Sending data to firestore
 const addData = async () => {
   const docRef = await addDoc(collection(db, "todos"), {
@@ -130,6 +134,7 @@ const addData = async () => {
     timestamp: serverTimestamp(),
   });
 };
+
 //Button event listener
 const addEventListeners = () => {
   let editButtons = document.querySelectorAll(".edit_btn");
@@ -151,6 +156,7 @@ addEventListeners();
 //Edit Button
 const editItem = async (index) => {
   let newValue = prompt("Enter new value:");
+  
 
   if (newValue !== null) {
     if (newValue.length < 15) {
@@ -179,11 +185,25 @@ const deleteItem = async (index) => {
   const querySnapshot = await getDocs(ref);
   const documents = querySnapshot.docs;
   const docId = documents[index].id;
+
+  //sweet altert
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 1000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+  Toast.fire({
+    icon: "success",
+    title: "Task Removed",
+  });
   await deleteDoc(doc(db, "todos", docId));
 };
-
-const addItem_btn = document.getElementById("addItem_btn");
-addItem_btn.addEventListener("click", addItem);
 
 //Getting data from FireStore & Display
 const getData = async () => {
