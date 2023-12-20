@@ -156,7 +156,6 @@ addEventListeners();
 //Edit Button
 const editItem = async (index) => {
   let newValue = prompt("Enter new value:");
-  
 
   if (newValue !== null) {
     if (newValue.length < 15) {
