@@ -81,7 +81,7 @@ let logout = () => {
   setTimeout(() => {
     signOut(auth)
       .then(() => {
-        console.log("Sign-out successful.");
+        // console.log("Sign-out successful.");
         window.location = "signin.html";
       })
       .catch((error) => {
@@ -159,6 +159,7 @@ const editItem = async (index) => {
 
   if (newValue !== null) {
     if (newValue.length < 15) {
+      
       // Update Firestore data
       const ref = query(collection(db, "todos"), orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(ref);
